@@ -73,20 +73,37 @@ const students = [
         score: 95
     }
 ]
+function createElement(element, thing, classval){
+    return `<${element} class="${classval}">${thing}</${element}>`
+}
+
+
+// const createstudentHTML = (obj) => {
+//     return ` <div class="student">
+//     <h1 class=" ${obj.score<60 ? 'failing' :obj.score>60 ? 'passing xx-large': ''}">${obj.name}</h1>
+//     <section class="${obj.score>60 ? 'bordered dashed section--padded' :''}">${obj.subject}</section>
+//     <aside class="${obj.score>60 ? 'pushRight' :''}>${obj.info}</aside>
+// </div>`
+// }
 
 const createstudentHTML = (obj) => {
     return ` <div class="student">
-    <h1 class=" ${obj.score<60 ? 'failing' :obj.score>60 ? 'passing xx-large': ''}">${obj.name}</h1>
-    <section class="${obj.score>60 ? 'bordered dashed section--padded' :''}">${obj.subject}</section>
-    <aside class="${obj.score>60 ? 'pushRight' :''}>${obj.info}</aside>
+    ${createElement('h1', obj.name, `${obj.score<60 ? 'failing' :obj.score>60 ? 'passing xx-large' : ''}`)}
+    ${createElement('section', obj.subject, 'bordered dashed section--padded')}
+    ${createElement('aside', obj.info, 'pushright')}
 </div>`
 }
+
+
 
 const studentContainer = document.querySelector('#container');
 
 for (let i=0; i<students.length; i++){
     studentContainer.innerHTML += createstudentHTML(students[i]);
 }
+
+const test = createElement('h1', "hello world", 'failing');
+console.log(test);
 
 
 
