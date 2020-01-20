@@ -75,10 +75,10 @@ const students = [
 ]
 
 const createstudentHTML = (obj) => {
-    return ` <div class="student ${obj.score<70 ? 'failing' :''}">
-    <h1>${obj.name}</h1>
-    <section>${obj.subject}</section>
-    <aside>${obj.info}</aside>
+    return ` <div class="student">
+    <h1 class=" ${obj.score<60 ? 'failing' :obj.score>60 ? 'passing xx-large': ''}">${obj.name}</h1>
+    <section class="${obj.score>60 ? 'bordered dashed section--padded' :''}">${obj.subject}</section>
+    <aside class="${obj.score>60 ? 'pushRight' :''}>${obj.info}</aside>
 </div>`
 }
 
